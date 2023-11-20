@@ -43,7 +43,6 @@ bin
 .DS_Store
 data
 gradle
-src
 build.gradle.kts
 Dockerfile
 gradlew
