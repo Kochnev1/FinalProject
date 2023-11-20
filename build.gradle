@@ -1,6 +1,7 @@
 plugins {
     id 'java'
     id "io.freefair.lombok" version "8.2.2"
+    id 'io.qameta.allure' version '2.9.6'
 
 }
 
@@ -18,6 +19,8 @@ dependencies {
     testImplementation 'com.github.javafaker:javafaker:1.0.2'
     testImplementation 'io.rest-assured:rest-assured:5.3.1'
     testImplementation 'com.google.code.gson:gson:2.8.6'
+    testImplementation 'commons-dbutils:commons-dbutils:1.7'
+    testImplementation 'io.qameta.allure:allure-selenide:2.16.1'
 }
 
 test {
