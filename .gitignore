@@ -41,7 +41,6 @@ bin
 
 ### Mac OS ###
 .DS_Store
-data
 gradle
 build.gradle.kts
 Dockerfile
