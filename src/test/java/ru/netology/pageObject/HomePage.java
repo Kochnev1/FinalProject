@@ -15,12 +15,12 @@ public class HomePage {
     }
 
     public CreditPage credit() {
-        $$("button").find(exactText("Купить в кредит")).click();
+        $$("[class='button button_view_extra button_size_m button_theme_alfa-on-white']").find(exactText("Купить в кредит")).click();
         return new CreditPage();
     }
 
     public PaymentPage payment() {
-        $$("button").find(exactText("Купить")).click();
+        $$("[class='button button_size_m button_theme_alfa-on-white']").find(exactText("Купить")).click();
         return new PaymentPage();
     }
 }

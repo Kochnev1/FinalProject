@@ -102,10 +102,6 @@ public class DataHelper {
         public static String getOwnerName() {
             return faker.name().username();
         }
-//
-//        public static String getOwnerFirstName() {
-//            return faker.name().firstName();
-//        }
 
 
         public static String getOwnerNameInRussia() {
