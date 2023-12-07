@@ -1,138 +1,147 @@
 package ru.netology.data;
 
 import com.github.javafaker.Faker;
-import lombok.RequiredArgsConstructor;
-import lombok.Value;
 
 import java.time.LocalDate;
-import java.time.Year;
+import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 
 public class DataHelper {
+    private static Faker fakerEn = new Faker(new Locale("en"));
+    private static Faker fakerRu = new Faker(new Locale("ru"));
+
     private DataHelper() {
     }
 
-    public static Faker faker = new Faker(new Locale("en"));
+    public static String getFirstCardNumber() {
+        return "4444 4444 4444 4441";
+    }
 
-    @Value
-    @RequiredArgsConstructor
-    public static class CardInfo {
-        private String cardNumber;
-        private String month;
-        private String year;
-        private String owner;
-        private String cardCVC;
+    public static String getSecondCardNumber() {
+        return "4444 4444 4444 4442";
+    }
 
+    public static String getFirstCardStatus() {
+        return "APPROVED";
+    }
 
-        //    Заполнение поля Номер карты
-        public static String getApprovedCardNumber() {
-            return ("4444 4444 4444 4441");
-        }
+    public static String getSecondCardStatus() {
+        return "DECLINED";
+    }
 
-        public static String getDeclinedCardNumber() {
-            return ("4444 4444 4444 4442");
-        }
+    public static String getEmptyCardNumber() {
+        return "";
+    }
 
-        public static String getUnknownCardNumber() {
-            return ("7821 9314 9823 2311");
-        }
+    public static String getRandomCardNumber() {
+        return fakerEn.business().creditCardNumber();
+    }
 
-        public static String getShortCardNumber() {
-            return ("4444 4444 4444");
-        }
+    public static String getCardNumberWith15Digits() {
+        return "4444 4444 4444 444";
+    }
 
-        public static String getCardNumberIsSymbols() {
-            return ("@!!& !?!? **** )(");
-        }
+    public static String getCardNumberWith1Digit() {
+        return fakerEn.number().digits(1);
+    }
 
-        public static String getCardNumberIsLetters() {
-            return ("qazw sxed rfvt gbyh");
-        }
+    public static String getCardNumberWithTextAndChars() {
+        return "кто здесь?";
+    }
 
-        //    Заполнение поля Месяц
-        public static String getValidMonth() {
-            LocalDate localDate = LocalDate.now();
-            return String.format("%02d", localDate.getMonthValue());
-        }
+    public static String getValidMonth() {
+        String validMonth = LocalDate.now().format(DateTimeFormatter.ofPattern("MM"));
+        return validMonth;
+    }
 
-        public static String getMonthAbove12() {
-            return ("13");
-        }
+    public static String getEmptyMonth() {
+        return "";
+    }
 
-        public static String getMonthIsLetters() {
-            return ("HAfwf");
-        }
+    public static String getMonthOver12() {
+        return "13";
+    }
 
-        public static String getMonthIsSymbols() {
-            return ("%^");
-        }
+    public static String getZeroMonth() {
+        return "00";
+    }
 
-        public static String getMonthWithZero() {
-            return ("00");
-        }
+    public static String getInvalidFormatMonth() {
+        return fakerEn.number().digit();
+    }
 
-        //    Заполнение поля Год
-        public static String getValidYear() {
-            return String.format("%ty", Year.now());
-        }
+    public static String getMonthWithText() {
+        return "абвгд";
+    }
 
-        public static String getPastYear() {
-            LocalDate localDate = LocalDate.now();
-            return String.format("20");
-        }
+    public static String getValidYear() {
+        String validYear = LocalDate.now().format(DateTimeFormatter.ofPattern("yy"));
+        return validYear;
+    }
 
-        public static String getMoreThan5Years() {
-            LocalDate localDate = LocalDate.now();
-            return String.format("29");
-        }
+    public static String getEmptyYear() {
+        return "";
+    }
 
-        public static String getYearIsLetters() {
-            return ("af");
-        }
+    public static String getPastYear() {
+        String pastYear = LocalDate.now().minusYears(1).format(DateTimeFormatter.ofPattern("yy"));
+        return pastYear;
+    }
 
-        public static String getYearIsSymbols() {
-            return ("!&");
-        }
+    public static String getInvalidFormatYear() {
+        return fakerEn.number().digit();
+    }
 
-        public static String getYearIsOneValue() {
-            return ("9");
-        }
+    public static String getFutureYear() {
+        String futureYear = LocalDate.now().plusYears(10).format(DateTimeFormatter.ofPattern("yy"));
+        return futureYear;
+    }
 
-        //    Заполнение поля Владелец
-        public static String getOwnerName() {
-            return faker.name().username();
-        }
+    public static String getYearWithText() {
+        return "двадцать третий";
+    }
 
+    public static String getValidOwner() {
+        return fakerEn.name().firstName() + " " + fakerEn.name().lastName();
+    }
 
-        public static String getOwnerNameInRussia() {
-            Faker faker = new Faker(new Locale("ru"));
-            return faker.name().username();
-        }
-
-        public static String getOwnerNameIsValue() {
-            return "434567";
-        }
-
-        public static String getOwnerNameIsSymbols() {
-            return "*****";
-        }
+    public static String getEmptyOwner() {
+        return "";
+    }
 
 
-        //    Заполнение поля CVC
-        public static String getCVC() {
-            return "655";
-        }
+    public static String getLowercaseLettersOwner() {
+        return fakerEn.name().firstName().toLowerCase(Locale.ROOT) + " " + fakerEn.name().lastName().toLowerCase(Locale.ROOT);
+    }
 
-        public static String getCVCIsLetters() {
-            return "zle";
-        }
 
-        public static String getCVCIsSymbols() {
-            return "***";
-        }
+    public static String getCyrillicDataOwner() {
+        return fakerRu.name().fullName();
+    }
 
-        public static String getCVCShort() {
-            return "55";
-        }
+
+    public static String getOwnerWithDigits() {
+        return fakerEn.number().digits(5);
+    }
+
+    public static String getOwnerWithSpecialChars() {
+        return "!№%?*";
+    }
+
+    public static String getValidCode() {
+        return fakerEn.number().digits(3);
+    }
+
+    public static String getEmptyCode() {
+        return "";
+    }
+
+    public static String getInvalidFormatCode() {
+        return fakerEn.number().digits(2);
+    }
+
+    public static String getCodeWithText() {
+        return "тык";
     }
 }
+

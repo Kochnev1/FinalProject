@@ -4,24 +4,30 @@ import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Condition.exactText;
 import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selenide.$$;
-
+import static com.codeborne.selenide.Selectors.byText;
+import static com.codeborne.selenide.Selenide.$;
 
 public class HomePage {
-    private SelenideElement heading = $$("[class='heading heading_size_l heading_theme_alfa-on-white']").find(exactText("Путешествие дня"));
 
-    public HomePage(){
+    private SelenideElement heading = $("[class='heading heading_size_l heading_theme_alfa-on-white']");
+    private SelenideElement headingPaymentForm = $("[class='heading heading_size_m heading_theme_alfa-on-white']");
+    private SelenideElement buyByDebitCardButton = $(byText("Купить"));
+    private SelenideElement buyByCreditCardButton = $(byText("Купить в кредит"));
+
+    public HomePage() {
         heading.shouldBe(visible);
     }
 
-    public CreditPage credit() {
-        $$("[class='button button_view_extra button_size_m button_theme_alfa-on-white']").find(exactText("Купить в кредит")).click();
-        return new CreditPage();
+    public FormPaymentPage payWithDebitCard() {
+        buyByDebitCardButton.click();
+        headingPaymentForm.shouldHave(exactText("Оплата по карте"));
+        return new FormPaymentPage();
     }
 
-    public PaymentPage payment() {
-        $$("[class='button button_size_m button_theme_alfa-on-white']").find(exactText("Купить")).click();
-        return new PaymentPage();
+    public FormCreditPage payWithCreditCard() {
+        buyByCreditCardButton.click();
+        headingPaymentForm.shouldHave(exactText("Кредит по данным карты"));
+        return new FormCreditPage();
     }
 }
 
