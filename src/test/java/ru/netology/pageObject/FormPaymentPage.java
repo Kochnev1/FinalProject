@@ -11,7 +11,7 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 
 public class FormPaymentPage {
-    private SelenideElement numberCardField = $$("[class='form-field form-field_size_m form-field_theme_alfa-on-white']").find(exactText("Номер карты"));
+    private SelenideElement numberCardField = $$("[class='input input_type_text input_view_default input_size_m input_width_available input_has-label input_theme_alfa-on-white']").find(exactText("Номер карты"));
     private SelenideElement monthField = $$("[class='input input_type_text input_view_default input_size_m input_width_available input_has-label input_theme_alfa-on-white]").find(exactText("Месяц"));
     private SelenideElement yearField = $$("[class='input-group__input-case']").find(exactText("Год"));
     private SelenideElement ownerField = $$("[class='input-group__input-case']").find(exactText("Владелец"));
@@ -49,31 +49,31 @@ public class FormPaymentPage {
     }
 
     public void waitForFailedNotification() {
-        failedNotification.shouldBe(Condition.visible, Duration.ofSeconds(11));
+        failedNotification.shouldBe(Condition.visible, Duration.ofSeconds(15));
     }
 
     public void waitForSuccessNotification() {
-        successedNotification.shouldBe(Condition.visible, Duration.ofSeconds(11));
+        successedNotification.shouldBe(Condition.visible, Duration.ofSeconds(15));
     }
 
     public void waitForMandatoryFieldMessage() {
-        mandatoryFieldMessage.shouldBe(Condition.visible, Duration.ofSeconds(11));
+        mandatoryFieldMessage.shouldBe(Condition.visible, Duration.ofSeconds(15));
     }
 
     public void waitForWrongFormatMessage() {
-        wrongFormatMessage.shouldBe(Condition.visible, Duration.ofSeconds(11));
+        wrongFormatMessage.shouldBe(Condition.visible, Duration.ofSeconds(15));
     }
 
     public void waitForInvalidCharactersMessage() {
-        invalidCharactersMessage.shouldBe(Condition.visible, Duration.ofSeconds(11));
+        invalidCharactersMessage.shouldBe(Condition.visible, Duration.ofSeconds(15));
     }
 
     public void waitForWrongCardExpirationMessage() {
-        wrongCardExpirationMessage.shouldBe(Condition.visible, Duration.ofSeconds(11));
+        wrongCardExpirationMessage.shouldBe(Condition.visible, Duration.ofSeconds(15));
     }
 
     public void waitForCardExpiredMessage() {
-        cardExpiredMessage.shouldBe(Condition.visible, Duration.ofSeconds(11));
+        cardExpiredMessage.shouldBe(Condition.visible, Duration.ofSeconds(15));
     }
 }
 

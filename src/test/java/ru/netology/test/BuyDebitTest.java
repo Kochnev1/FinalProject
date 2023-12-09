@@ -50,7 +50,7 @@ public class BuyDebitTest {
         paymentFormPageDebit.fillForm(cardNumber, month, year, cardOwner, code);
         paymentFormPageDebit.waitForSuccessNotification();
         var expected = DataHelper.getFirstCardStatus();
-        var actual = SqlHelper.getCreditPaymentStatus();
+        var actual = SqlHelper.getDebitPaymentStatus();
         assertEquals(expected, actual);
     }
     @Test
