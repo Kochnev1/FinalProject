@@ -35,7 +35,7 @@ bin
 /dist/
 /nbdist/
 /.nb-gradle/
-allure-results
+**/allure-results
 
 ### VS Code ###
 .vscode/
