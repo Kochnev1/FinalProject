@@ -42,15 +42,15 @@ public class BuyDebitTest {
     void shouldPurchaseUsingValidData() {
         paymentFormPageDebit = homePage.payWithDebitCard()
                 .clear();
-        val cardNumber = DataHelper.getFirstCardNumber();
-        val month = DataHelper.getValidMonth();
-        val year = DataHelper.getValidYear();
-        val cardOwner = DataHelper.getValidOwner();
-        val code = DataHelper.getValidCode();
+        var cardNumber = DataHelper.getFirstCardNumber();
+        var month = DataHelper.getValidMonth();
+        var year = DataHelper.getValidYear();
+        var cardOwner = DataHelper.getValidOwner();
+        var code = DataHelper.getValidCode();
         paymentFormPageDebit.fillForm(cardNumber, month, year, cardOwner, code);
         paymentFormPageDebit.waitForSuccessNotification();
-        val expected = DataHelper.getFirstCardStatus();
-        val actual = SqlHelper.getCreditPaymentStatus();
+        var expected = DataHelper.getFirstCardStatus();
+        var actual = SqlHelper.getCreditPaymentStatus();
         assertEquals(expected, actual);
     }
     @Test
