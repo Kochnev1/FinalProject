@@ -9,6 +9,7 @@ import ru.netology.pageObject.HomePage;
 import ru.netology.pageObject.FormPaymentPage;
 import ru.netology.data.SqlHelper;
 
+
 import static com.codeborne.selenide.Selenide.open;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -94,7 +95,7 @@ public class BuyDebitTest {
         paymentFormPageDebit.fillForm(cardNumber, month, year, cardOwner, code);
         paymentFormPageDebit.waitForFailedNotification();
         val expected = DataHelper.getSecondCardStatus();
-        val actual = SqlHelper.getCreditPaymentStatus();
+        val actual = SqlHelper.getDebitPaymentStatus();
         assertEquals(expected, actual);
     }
 
@@ -151,7 +152,7 @@ public class BuyDebitTest {
         val cardOwner = DataHelper.getValidOwner();
         val code = DataHelper.getValidCode();
         paymentFormPageDebit.fillForm(cardNumber, month, year, cardOwner, code);
-        paymentFormPageDebit.waitForInvalidCharactersMessage();
+        paymentFormPageDebit.waitForWrongFormatMessage();
     }
 
     @Test
@@ -179,7 +180,7 @@ public class BuyDebitTest {
         val cardOwner = DataHelper.getValidOwner();
         val code = DataHelper.getValidCode();
         paymentFormPageDebit.fillForm(cardNumber, month, year, cardOwner, code);
-        paymentFormPageDebit.waitForWrongCardExpirationMessage();
+        paymentFormPageDebit.waitForWrongFormatMessage();
     }
 
     @Test
@@ -193,7 +194,7 @@ public class BuyDebitTest {
         val cardOwner = DataHelper.getValidOwner();
         val code = DataHelper.getValidCode();
         paymentFormPageDebit.fillForm(cardNumber, month, year, cardOwner, code);
-        paymentFormPageDebit.waitForWrongCardExpirationMessage();
+        paymentFormPageDebit.waitForWrongFormatMessage();
     }
 
     @Test
@@ -221,7 +222,7 @@ public class BuyDebitTest {
         val cardOwner = DataHelper.getValidOwner();
         val code = DataHelper.getValidCode();
         paymentFormPageDebit.fillForm(cardNumber, month, year, cardOwner, code);
-        paymentFormPageDebit.waitForInvalidCharactersMessage();
+        paymentFormPageDebit.waitForWrongFormatMessage();
     }
 
     @Test
@@ -249,7 +250,7 @@ public class BuyDebitTest {
         val cardOwner = DataHelper.getValidOwner();
         val code = DataHelper.getValidCode();
         paymentFormPageDebit.fillForm(cardNumber, month, year, cardOwner, code);
-        paymentFormPageDebit.waitForCardExpiredMessage();
+        paymentFormPageDebit.waitForWrongFormatMessage();
     }
 
     @Test
@@ -277,7 +278,7 @@ public class BuyDebitTest {
         val cardOwner = DataHelper.getValidOwner();
         val code = DataHelper.getValidCode();
         paymentFormPageDebit.fillForm(cardNumber, month, year, cardOwner, code);
-        paymentFormPageDebit.waitForWrongCardExpirationMessage();
+        paymentFormPageDebit.waitForWrongFormatMessage();
     }
 
     @Test
@@ -291,7 +292,7 @@ public class BuyDebitTest {
         val cardOwner = DataHelper.getValidOwner();
         val code = DataHelper.getValidCode();
         paymentFormPageDebit.fillForm(cardNumber, month, year, cardOwner, code);
-        paymentFormPageDebit.waitForInvalidCharactersMessage();
+        paymentFormPageDebit.waitForWrongFormatMessage();
     }
 
     @Test
@@ -348,7 +349,7 @@ public class BuyDebitTest {
         val cardOwner = DataHelper.getOwnerWithDigits();
         val code = DataHelper.getValidCode();
         paymentFormPageDebit.fillForm(cardNumber, month, year, cardOwner, code);
-        paymentFormPageDebit.waitForInvalidCharactersMessage();
+        paymentFormPageDebit.waitForMandatoryFieldMessage();
     }
 
     @Test   //Поле "Владелец" заполнено спец.символами
@@ -361,7 +362,7 @@ public class BuyDebitTest {
         val cardOwner = DataHelper.getOwnerWithSpecialChars();
         val code = DataHelper.getValidCode();
         paymentFormPageDebit.fillForm(cardNumber, month, year, cardOwner, code);
-        paymentFormPageDebit.waitForInvalidCharactersMessage();
+        paymentFormPageDebit.waitForMandatoryFieldMessage();
     }
 
     @Test   //Поле "CVC/CVV" оставлено пустым
@@ -400,6 +401,6 @@ public class BuyDebitTest {
         val cardOwner = DataHelper.getValidOwner();
         val code = DataHelper.getCodeWithText();
         paymentFormPageDebit.fillForm(cardNumber, month, year, cardOwner, code);
-        paymentFormPageDebit.waitForInvalidCharactersMessage();
+        paymentFormPageDebit.waitForWrongFormatMessage();
     }
 }

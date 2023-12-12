@@ -11,20 +11,18 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 
 public class FormPaymentPage {
-    private SelenideElement numberCardField = $$("[class='input input_type_text input_view_default input_size_m input_width_available input_has-label input_theme_alfa-on-white']").find(exactText("Номер карты"));
-    private SelenideElement monthField = $$("[class='input input_type_text input_view_default input_size_m input_width_available input_has-label input_theme_alfa-on-white]").find(exactText("Месяц"));
-    private SelenideElement yearField = $$("[class='input-group__input-case']").find(exactText("Год"));
-    private SelenideElement ownerField = $$("[class='input-group__input-case']").find(exactText("Владелец"));
-    private SelenideElement cvcField = $$("[class='input-group__input-case']").find(exactText("CVC/CVV"));
+    private SelenideElement numberCardField = $("[placeholder='0000 0000 0000 0000']");
+    private SelenideElement monthField = $("[placeholder='08']");
+    private SelenideElement yearField = $("[placeholder='22']");
+    private SelenideElement ownerField = $$("[class='input__control']").get(3);
+    private SelenideElement cvcField = $("[placeholder='999']");
     private SelenideElement execButton = $$("button").find(exactText("Продолжить"));
 
     private SelenideElement failedNotification = $(byText("Ошибка! Банк отказал в проведении операции."));
     private SelenideElement successedNotification = $(byText("Операция одобрена Банком."));
     private SelenideElement mandatoryFieldMessage = $(byText("Поле обязательно для заполнения"));
     private SelenideElement wrongFormatMessage = $(byText("Неверный формат"));
-    private SelenideElement invalidCharactersMessage = $(byText("Поле содержит недопустимые символы"));
-    private SelenideElement wrongCardExpirationMessage = $(byText("Неверно указан срок действия карты"));
-    private SelenideElement cardExpiredMessage = $(byText("Истёк срок действия карты"));
+
 
     public void fillForm(String cardNumber, String month, String year, String cardOwner, String code) {
         numberCardField.sendKeys(cardNumber);
@@ -64,17 +62,6 @@ public class FormPaymentPage {
         wrongFormatMessage.shouldBe(Condition.visible, Duration.ofSeconds(15));
     }
 
-    public void waitForInvalidCharactersMessage() {
-        invalidCharactersMessage.shouldBe(Condition.visible, Duration.ofSeconds(15));
-    }
-
-    public void waitForWrongCardExpirationMessage() {
-        wrongCardExpirationMessage.shouldBe(Condition.visible, Duration.ofSeconds(15));
-    }
-
-    public void waitForCardExpiredMessage() {
-        cardExpiredMessage.shouldBe(Condition.visible, Duration.ofSeconds(15));
-    }
 }
 
 

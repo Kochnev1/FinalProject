@@ -152,7 +152,7 @@ public class BuyCreditTest {
         val cardOwner = DataHelper.getValidOwner();
         val code = DataHelper.getValidCode();
         paymentFormPageCredit.fillForm(cardNumber, month, year, cardOwner, code);
-        paymentFormPageCredit.waitForInvalidCharactersMessage();
+        paymentFormPageCredit.waitForWrongFormatMessage();
     }
 
     @Test
@@ -180,7 +180,7 @@ public class BuyCreditTest {
         val cardOwner = DataHelper.getValidOwner();
         val code = DataHelper.getValidCode();
         paymentFormPageCredit.fillForm(cardNumber, month, year, cardOwner, code);
-        paymentFormPageCredit.waitForWrongCardExpirationMessage();
+        paymentFormPageCredit.waitForWrongFormatMessage();
     }
 
     @Test
@@ -194,7 +194,7 @@ public class BuyCreditTest {
         val cardOwner = DataHelper.getValidOwner();
         val code = DataHelper.getValidCode();
         paymentFormPageCredit.fillForm(cardNumber, month, year, cardOwner, code);
-        paymentFormPageCredit.waitForWrongCardExpirationMessage();
+        paymentFormPageCredit.waitForWrongFormatMessage();
     }
 
     @Test
@@ -222,7 +222,7 @@ public class BuyCreditTest {
         val cardOwner = DataHelper.getValidOwner();
         val code = DataHelper.getValidCode();
         paymentFormPageCredit.fillForm(cardNumber, month, year, cardOwner, code);
-        paymentFormPageCredit.waitForInvalidCharactersMessage();
+        paymentFormPageCredit.waitForWrongFormatMessage();
     }
 
     @Test
@@ -250,7 +250,7 @@ public class BuyCreditTest {
         val cardOwner = DataHelper.getValidOwner();
         val code = DataHelper.getValidCode();
         paymentFormPageCredit.fillForm(cardNumber, month, year, cardOwner, code);
-        paymentFormPageCredit.waitForCardExpiredMessage();
+        paymentFormPageCredit.waitForWrongFormatMessage();
     }
 
     @Test
@@ -278,7 +278,7 @@ public class BuyCreditTest {
         val cardOwner = DataHelper.getValidOwner();
         val code = DataHelper.getValidCode();
         paymentFormPageCredit.fillForm(cardNumber, month, year, cardOwner, code);
-        paymentFormPageCredit.waitForWrongCardExpirationMessage();
+        paymentFormPageCredit.waitForWrongFormatMessage();
     }
 
     @Test
@@ -292,7 +292,7 @@ public class BuyCreditTest {
         val cardOwner = DataHelper.getValidOwner();
         val code = DataHelper.getValidCode();
         paymentFormPageCredit.fillForm(cardNumber, month, year, cardOwner, code);
-        paymentFormPageCredit.waitForInvalidCharactersMessage();
+        paymentFormPageCredit.waitForWrongFormatMessage();
     }
 
     @Test
@@ -349,7 +349,7 @@ public class BuyCreditTest {
         val cardOwner = DataHelper.getOwnerWithDigits();
         val code = DataHelper.getValidCode();
         paymentFormPageCredit.fillForm(cardNumber, month, year, cardOwner, code);
-        paymentFormPageCredit.waitForInvalidCharactersMessage();
+        paymentFormPageCredit.waitForMandatoryFieldMessage();
     }
 
     @Test   //Поле "Владелец" заполнено спец.символами
@@ -362,7 +362,7 @@ public class BuyCreditTest {
         val cardOwner = DataHelper.getOwnerWithSpecialChars();
         val code = DataHelper.getValidCode();
         paymentFormPageCredit.fillForm(cardNumber, month, year, cardOwner, code);
-        paymentFormPageCredit.waitForInvalidCharactersMessage();
+        paymentFormPageCredit.waitForMandatoryFieldMessage();
     }
 
     @Test   //Поле "CVC/CVV" оставлено пустым
@@ -401,6 +401,6 @@ public class BuyCreditTest {
         val cardOwner = DataHelper.getValidOwner();
         val code = DataHelper.getCodeWithText();
         paymentFormPageCredit.fillForm(cardNumber, month, year, cardOwner, code);
-        paymentFormPageCredit.waitForInvalidCharactersMessage();
+        paymentFormPageCredit.waitForWrongFormatMessage();
     }
 }
