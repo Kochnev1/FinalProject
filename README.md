@@ -27,7 +27,7 @@ docker-compose up
 
 ![Снимок экрана 2023-11-29 205407](https://github.com/Kochnev1/FinalProject/assets/134865182/21fd4b14-ce9f-4c47-86fc-aa54d879acc9)
 
-2) Запускаем SUT командой в терминале:
+2) Запускаем приложение командой в терминале:
 
 - для MySQL:
 
