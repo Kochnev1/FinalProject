@@ -55,6 +55,13 @@ java "-Dspring.datasource.url=jdbc:postgresql://localhost:5432/app" -jar aqa-sho
 По окончанию работы можно отключить **allureServe** в терминале сочетанием клавиш _CTRL + C_ и
 подтверждаем действие в терминале вводом _Y_.
 
+## Документация
+
+[План тестирования](https://github.com/Kochnev1/FinalProject/blob/main/Plan.md)
+
+[Отчет о тестировании](https://github.com/Kochnev1/FinalProject/blob/main/Report.md)
+
+[Итоги работы](https://github.com/Kochnev1/FinalProject/blob/main/Summary.md)
 
 
 
